@@ -1,0 +1,6 @@
+[submodule "support/adt-html.js"]
+	path = support/adt-html.js
+	url = https://github.com/rehno-lindeque/adt-html.js
+[submodule "support/adt.js"]
+	path = support/adt.js
+	url = https://github.com/rehno-lindeque/adt.js
