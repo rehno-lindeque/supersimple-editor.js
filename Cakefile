@@ -7,6 +7,8 @@ libFiles  = [
   'core'
 ]
 
+libName = "supersimple-editor"
+
 ###
 Build helpers (sequenced, composible)
 ###
@@ -50,23 +52,23 @@ Build scripts
 ###
 
 # Maybe (() -> IO) -> () -> IO
-build = (callback) -> (concatSrcFiles libFiles) (writeFile 'build/supersimple-editor.js') callback
+build = (callback) -> (concatSrcFiles libFiles) (writeFile "build/#{libName}.js") callback
 
 # Maybe (() -> IO) -> () -> IO
 minify = (callback) -> ->
   path.exists 'node_modules/.bin/uglifyjs', (exists) ->
     tool = if exists then 'node_modules/.bin/uglifyjs' else 'uglifyjs'
-    path.exists 'build/supersimple-editor.js', (exists) ->
+    path.exists "build/#{libName}.js", (exists) ->
       if exists
-        exec "#{tool} --no-copyright build/supersimple-editor.js > build/supersimple-editor.min.js", (err, stdout, stderr) ->
+        exec "#{tool} --no-copyright build/#{libName}.js > build/#{libName}.min.js", (err, stdout, stderr) ->
           throw err if err
           console.log stdout + stderr
           callback() if callback?
 
 # Maybe (() -> IO) -> () -> IO
 wrap = (callback) ->
-  filename = 'supersimple-editor.js'
-  filenameMin = 'supersimple-editor.min.js'
+  filename = "#{libName}.js"
+  filenameMin = "#{libName}.min.js"
 
   # TODO: Unfortunately it is not so easy to wrap `(callback) -> f0 f1 f2 callback` in JavaScript
   #       In order to get something similar to point-free style (http://www.haskell.org/haskellwiki/Pointfree)
@@ -78,8 +80,8 @@ wrap = (callback) ->
   writeMin = (callback) -> (concatFiles ['src/header.js', "build/#{filenameMin}", 'src/footer.js']) (writeFile "dist/#{filenameMin}") callback
 
   # Maybe (() -> IO) -> () -> IO
-  wrap = (callback) -> write (logDone 'supersimple-editor.js') callback
-  wrapMin = (callback) -> writeMin (logDone 'supersimple-editor.min.js') callback
+  wrap = (callback) -> write (logDone "#{libName}.js") callback
+  wrapMin = (callback) -> writeMin (logDone "#{libName}.min.js") callback
 
   # Maybe (() -> IO) -> () -> IO
   build = (ifExists "build/#{filename}") ((callback) -> wrap callback)
@@ -119,7 +121,7 @@ task 'minify', "Minify the resulting application file after build", ->
   (minify wrap())()
 
 task 'clean', "Cleanup all build files and distribution files", ->
-  exec "rm -rf build;rm dist/supersimple-editor.js;rm dist/supersimple-editor.min.js;rm dist/supersimple-editor.module.js;rm dist/supersimple-editor.module.min.js", (err, stdout, stderr) ->
+  exec "rm -rf build;rm dist/#{libName}.js;rm dist/#{libName}.min.js;rm dist/#{libName}.module.js;rm dist/#{libName}.module.min.js", (err, stdout, stderr) ->
     console.log stdout + stderr
     console.log "...Done (clean)"
 
