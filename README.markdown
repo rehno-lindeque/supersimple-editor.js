@@ -36,7 +36,7 @@ Then we also simply get rid of html elements that do not belong.
 * **THE BIG CAVEATS:** 
   * **supersimple** is being developed for personal use and sometimes personal needs will trump ideology (a.k.a. having a day job).
   * At the moment **supersimple** relies on [adt.js](https://github.com/rehno-lindeque/adt.js) (minimum version 1.0) and [adt-html.js](https://github.com/rehno-lindeque/adt-html.js), partly to simplify things and partly because they're my libraries and I want to use them.
-  * By "super simple" we do not mean *superficially simple*, we mean *superbly simple*. Where appropriate supersimple uses any number of clever tricks in order to get the basics Exactly Right (TM).
+  * By "super simple" we do not mean *superficially simple*, we mean *superbly simple*. Where appropriate supersimple uses any number of clever tricks in order to get the basics just so.
 
 Note that **supersimple-editor.js** has not been released yet and therefore does not guarantee any sort of robustness right now!
 
