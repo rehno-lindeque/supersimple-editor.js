@@ -6,5 +6,5 @@ console.log("-- Test 1 (...) --");
   
   // Create editor
   elResult.appendChild(html.h1("Super-duper simple:"));
-  elResult.appendChild(supersimple.editor().el);
+  elResult.appendChild(supersimple.editor());
 })(html.evalCons);
