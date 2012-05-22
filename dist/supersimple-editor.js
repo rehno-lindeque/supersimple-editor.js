@@ -23,15 +23,17 @@ var supersimple = supersimple || {};
       el.addEventListener('focus', function(e) { keys.ctrl = false; return true; }, false);
     };
 
-  supersimple.editor = function(textContents) {
-    var 
-      el = html.evalCons.pre(
-        {class: "supersimple-editor-input", contenteditable: "true", style: "padding: 20px;background: #ddd; outline: none;"}, 
-        typeof textContents === 'string'? textContents : "");
-    // Events will not be attached in older versions of IE < 9.
-    if (typeof el.addEventListener === 'function')
-      attachEvents(el);
-    return el;
+  supersimple.editor = {
+    html: function(textContents) {
+      var 
+        el = html.evalCons.pre(
+          {class: "supersimple-editor-input", contenteditable: "true", style: "padding: 20px;background: #ddd; outline: none;"}, 
+          typeof textContents === 'string'? textContents : "");
+      // Events will not be attached in older versions of IE < 9.
+      if (typeof el.addEventListener === 'function')
+        attachEvents(el);
+      return el;
+    }
   };
   // Export supersimple to a CommonJS module if exports is available
   if (typeof(exports) !== "undefined" && exports !== null)
