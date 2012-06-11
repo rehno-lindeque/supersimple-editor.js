@@ -1,5 +1,6 @@
   var
     attachEvents = function(el) {
+      /*
       var keys = { ctrl: false };
       el.addEventListener('keydown', function(e) {
         var 
@@ -9,10 +10,13 @@
           keys.ctrl = true;
         if (keys.ctrl && (c === 'B' || c === 'I'))
           e.preventDefault();
+        
       }, false);
+      // TODO: (issue #1) can't press b/i keys when ctrl combination has been used
       el.addEventListener('keyup', function(e) { keys.ctrl = !e.ctrlKey; return true; }, false);
       el.addEventListener('blur', function(e) { keys.ctrl = false; return true; }, false);
       el.addEventListener('focus', function(e) { keys.ctrl = false; return true; }, false);
+      */
     };
 
   supersimple.editor = {
