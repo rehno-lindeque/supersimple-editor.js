@@ -1,0 +1,19 @@
+{
+  "author": "Rehno Lindeque <code@rehno.lindeque.name> (http://rehno.lindeque.name)",
+  "name": "supersimple-editor.js",
+  "description": "Type check your JavaScript data structures",
+  "version": "0.0.0",
+  "homepage": "https://github.com/rehno-lindeque/supersimple-editor.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/rehno-lindeque/supersimple-editor.js.git"
+  },
+  "main": "./dist/supersimple-editor",
+  "engines": {},
+  "dependencies": {
+    "adt.js": "git+https://github.com/rehno-lindeque/adt.js.git#master",
+    "adt-html.js": "git+https://github.com/rehno-lindeque/adt-html.js.git#master"
+  },
+  "devDependencies": {},
+  "optionalDependencies": {}
+}
