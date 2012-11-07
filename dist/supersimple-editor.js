@@ -28,11 +28,19 @@ var supersimple = supersimple || {};
     };
 
   supersimple.editor = {
-    html: function(textContents) {
+    html: function(attributes, textContents) {
       var 
-        el = html.pre(
-          {class: "supersimple-editor-input", contenteditable: "true"}, 
-          typeof textContents === 'string'? textContents : "");
+        attributesPrime = {class: "supersimple-editor-input", contenteditable: "true"},
+        key,
+        el;
+      if (arguments.length === 1 && typeof arguments[0] === 'string')
+        textContents = attributes;
+      else for (key in attributes)
+        if (key === 'class')
+          attributesPrime.class += " " + attributes.class;
+        else 
+          attributesPrime[key] = attributes[key];
+      el = html.pre(attributesPrime, typeof textContents === 'string'? textContents : "");
       // Events will not be attached in older versions of IE < 9.
       if (typeof el.addEventListener === 'function')
         attachEvents(el);
